@@ -199,6 +199,7 @@
     <parameter key="env(VAR_DUMPER_SERVER)">127.0.0.1:9912</parameter>
     <parameter key="twig.form.resources" type="collection">
       <parameter>form_div_layout.html.twig</parameter>
+      <parameter>bootstrap_5_layout.html.twig</parameter>
     </parameter>
     <parameter key="twig.default_path">C:\Users\kuba\OneDrive\Pulpit\ZUT\AI2\AI2-L-grN2-Hubkiewicz-Jakub\pogodynka/templates</parameter>
     <parameter key="web_profiler.debug_toolbar.intercept_redirects">false</parameter>
@@ -331,12 +332,32 @@
     <service id="App\Entity" class="App\Entity" abstract="true">
       <tag name="container.excluded" source="in &quot;config/services.yaml&quot;"/>
     </service>
+    <service id="App\Controller\LocationController" class="App\Controller\LocationController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\LocationController"/>
+      </call>
+    </service>
+    <service id="App\Controller\MeasurementController" class="App\Controller\MeasurementController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\MeasurementController"/>
+      </call>
+    </service>
     <service id="App\Controller\WeatherController" class="App\Controller\WeatherController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
       <call method="setContainer">
         <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\WeatherController"/>
       </call>
+    </service>
+    <service id="App\Form\LocationType" class="App\Form\LocationType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\MeasurementType" class="App\Form\MeasurementType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
     </service>
     <service id="App\Repository\LocationRepository" class="App\Repository\LocationRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
@@ -373,7 +394,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.k5lbapq"/>
+      <argument type="service" id=".service_locator.CiLZ.Cg"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -1244,9 +1265,12 @@
       <argument type="service" id="form.registry"/>
       <argument type="collection">
         <argument>Symfony\Component\Form\Extension\Core\Type</argument>
+        <argument>App\Form</argument>
         <argument>Symfony\Bridge\Doctrine\Form\Type</argument>
       </argument>
       <argument type="collection">
+        <argument>App\Form\LocationType</argument>
+        <argument>App\Form\MeasurementType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\ChoiceType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FileType</argument>
@@ -2924,7 +2948,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.k5lbapq"/>
+      <argument type="service" id=".service_locator.CiLZ.Cg"/>
     </service>
     <service id="debug.log_processor" class="Symfony\Bridge\Monolog\Processor\DebugProcessor">
       <argument type="service" id="request_stack"/>
@@ -3402,7 +3426,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension">
-      <argument type="service" id=".service_locator.y4dplYt"/>
+      <argument type="service" id=".service_locator.fCZjU0k"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -3512,6 +3536,11 @@
       <call method="addXmlMappings">
         <argument type="collection">
           <argument>C:\Users\kuba\OneDrive\Pulpit\ZUT\AI2\AI2-L-grN2-Hubkiewicz-Jakub\pogodynka\vendor\symfony\form/Resources/config/validation.xml</argument>
+        </argument>
+      </call>
+      <call method="addYamlMappings">
+        <argument type="collection">
+          <argument>C:\Users\kuba\OneDrive\Pulpit\ZUT\AI2\AI2-L-grN2-Hubkiewicz-Jakub\pogodynka\config\validator\validation.yaml</argument>
         </argument>
       </call>
       <call method="enableAnnotationMapping">
@@ -4586,12 +4615,12 @@
       <argument>null</argument>
       <argument type="service" id="monolog.logger"/>
     </service>
-    <service id="messenger.transport.doctrine.factory" class="Symfony\Component\Messenger\Bridge\Doctrine\Transport\DoctrineTransportFactory">
-      <tag name="messenger.transport_factory"/>
-      <argument type="service" id="doctrine"/>
-    </service>
     <service id="doctrine.orm.messenger.event_subscriber.doctrine_clear_entity_manager" class="Symfony\Bridge\Doctrine\Messenger\DoctrineClearEntityManagerWorkerSubscriber">
       <tag name="kernel.event_subscriber"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="messenger.transport.doctrine.factory" class="Symfony\Component\Messenger\Bridge\Doctrine\Transport\DoctrineTransportFactory">
+      <tag name="messenger.transport_factory"/>
       <argument type="service" id="doctrine"/>
     </service>
     <service id="doctrine.orm.messenger.doctrine_schema_listener" class="Symfony\Bridge\Doctrine\SchemaListener\MessengerTransportDoctrineSchemaListener">
@@ -4945,6 +4974,9 @@
       <call method="setName">
         <argument>doctrine:migrations:diff</argument>
       </call>
+      <call method="setDescription">
+        <argument>Generate a migration by comparing your current database to your mapping information.</argument>
+      </call>
     </service>
     <service id="doctrine_migrations.sync_metadata_command" class="Doctrine\Migrations\Tools\Console\Command\SyncMetadataCommand">
       <tag name="console.command" command="doctrine:migrations:sync-metadata-storage"/>
@@ -4953,6 +4985,9 @@
       <argument>doctrine:migrations:sync-metadata-storage</argument>
       <call method="setName">
         <argument>doctrine:migrations:sync-metadata-storage</argument>
+      </call>
+      <call method="setDescription">
+        <argument>Ensures that the metadata storage is at the latest version.</argument>
       </call>
     </service>
     <service id="doctrine_migrations.versions_command" class="Doctrine\Migrations\Tools\Console\Command\ListCommand">
@@ -4963,6 +4998,9 @@
       <call method="setName">
         <argument>doctrine:migrations:list</argument>
       </call>
+      <call method="setDescription">
+        <argument>Display a list of all available migrations and their status.</argument>
+      </call>
     </service>
     <service id="doctrine_migrations.current_command" class="Doctrine\Migrations\Tools\Console\Command\CurrentCommand">
       <tag name="console.command" command="doctrine:migrations:current"/>
@@ -4971,6 +5009,9 @@
       <argument>doctrine:migrations:current</argument>
       <call method="setName">
         <argument>doctrine:migrations:current</argument>
+      </call>
+      <call method="setDescription">
+        <argument>Outputs the current version</argument>
       </call>
     </service>
     <service id="doctrine_migrations.dump_schema_command" class="Doctrine\Migrations\Tools\Console\Command\DumpSchemaCommand">
@@ -4981,6 +5022,9 @@
       <call method="setName">
         <argument>doctrine:migrations:dump-schema</argument>
       </call>
+      <call method="setDescription">
+        <argument>Dump the schema for your database to a migration.</argument>
+      </call>
     </service>
     <service id="doctrine_migrations.execute_command" class="Doctrine\Migrations\Tools\Console\Command\ExecuteCommand">
       <tag name="console.command" command="doctrine:migrations:execute"/>
@@ -4989,6 +5033,9 @@
       <argument>doctrine:migrations:execute</argument>
       <call method="setName">
         <argument>doctrine:migrations:execute</argument>
+      </call>
+      <call method="setDescription">
+        <argument>Execute one or more migration versions up or down manually.</argument>
       </call>
     </service>
     <service id="doctrine_migrations.generate_command" class="Doctrine\Migrations\Tools\Console\Command\GenerateCommand">
@@ -4999,6 +5046,9 @@
       <call method="setName">
         <argument>doctrine:migrations:generate</argument>
       </call>
+      <call method="setDescription">
+        <argument>Generate a blank migration class.</argument>
+      </call>
     </service>
     <service id="doctrine_migrations.latest_command" class="Doctrine\Migrations\Tools\Console\Command\LatestCommand">
       <tag name="console.command" command="doctrine:migrations:latest"/>
@@ -5007,6 +5057,9 @@
       <argument>doctrine:migrations:latest</argument>
       <call method="setName">
         <argument>doctrine:migrations:latest</argument>
+      </call>
+      <call method="setDescription">
+        <argument>Outputs the latest version</argument>
       </call>
     </service>
     <service id="doctrine_migrations.migrate_command" class="Doctrine\Migrations\Tools\Console\Command\MigrateCommand">
@@ -5017,6 +5070,9 @@
       <call method="setName">
         <argument>doctrine:migrations:migrate</argument>
       </call>
+      <call method="setDescription">
+        <argument>Execute a migration to a specified version or the latest available version.</argument>
+      </call>
     </service>
     <service id="doctrine_migrations.rollup_command" class="Doctrine\Migrations\Tools\Console\Command\RollupCommand">
       <tag name="console.command" command="doctrine:migrations:rollup"/>
@@ -5025,6 +5081,9 @@
       <argument>doctrine:migrations:rollup</argument>
       <call method="setName">
         <argument>doctrine:migrations:rollup</argument>
+      </call>
+      <call method="setDescription">
+        <argument>Rollup migrations by deleting all tracked versions and insert the one version that exists.</argument>
       </call>
     </service>
     <service id="doctrine_migrations.status_command" class="Doctrine\Migrations\Tools\Console\Command\StatusCommand">
@@ -5035,6 +5094,9 @@
       <call method="setName">
         <argument>doctrine:migrations:status</argument>
       </call>
+      <call method="setDescription">
+        <argument>View the status of a set of migrations.</argument>
+      </call>
     </service>
     <service id="doctrine_migrations.up_to_date_command" class="Doctrine\Migrations\Tools\Console\Command\UpToDateCommand">
       <tag name="console.command" command="doctrine:migrations:up-to-date"/>
@@ -5044,6 +5106,9 @@
       <call method="setName">
         <argument>doctrine:migrations:up-to-date</argument>
       </call>
+      <call method="setDescription">
+        <argument>Tells you if your schema is up-to-date.</argument>
+      </call>
     </service>
     <service id="doctrine_migrations.version_command" class="Doctrine\Migrations\Tools\Console\Command\VersionCommand">
       <tag name="console.command" command="doctrine:migrations:version"/>
@@ -5052,6 +5117,9 @@
       <argument>doctrine:migrations:version</argument>
       <call method="setName">
         <argument>doctrine:migrations:version</argument>
+      </call>
+      <call method="setDescription">
+        <argument>Manually add and delete migration versions from the version table.</argument>
       </call>
     </service>
     <service id="doctrine.migrations.storage.table_storage" class="Doctrine\Migrations\Metadata\Storage\TableMetadataStorageConfiguration"/>
@@ -6247,7 +6315,7 @@
     <service id="monolog.handler.main" class="Monolog\Handler\StreamHandler">
       <tag name="kernel.reset" method="reset"/>
       <argument>C:\Users\kuba\OneDrive\Pulpit\ZUT\AI2\AI2-L-grN2-Hubkiewicz-Jakub\pogodynka\var\log/dev.log</argument>
-      <argument>100</argument>
+      <argument>debug</argument>
       <argument>true</argument>
       <argument>null</argument>
       <argument>false</argument>
@@ -6446,9 +6514,19 @@
       <argument type="service" id="maker.security_config_updater"/>
       <argument type="service" id="maker.security_controller_builder"/>
     </service>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\LocationController" class="App\Controller\LocationController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\LocationController" class="App\Controller\LocationController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\LocationController" class="App\Controller\LocationController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\MeasurementController" class="App\Controller\MeasurementController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\MeasurementController" class="App\Controller\MeasurementController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\MeasurementController" class="App\Controller\MeasurementController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\WeatherController" class="App\Controller\WeatherController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\WeatherController" class="App\Controller\WeatherController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\WeatherController" class="App\Controller\WeatherController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\LocationType" class="App\Form\LocationType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\LocationType" class="App\Form\LocationType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\MeasurementType" class="App\Form\MeasurementType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\MeasurementType" class="App\Form\MeasurementType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\LocationRepository" class="App\Repository\LocationRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\LocationRepository" class="App\Repository\LocationRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\MeasurementRepository" class="App\Repository\MeasurementRepository" autowire="true" abstract="true"/>
@@ -6827,6 +6905,50 @@
         <argument key="loader" type="service_closure" id=".errored..service_locator.y4_Zrx..Symfony\Component\Config\Loader\LoaderInterface"/>
       </argument>
     </service>
+    <service id=".service_locator.YNXvnLc" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="locationRepository" type="service_closure" id="App\Repository\LocationRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.CsMkqUa" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.dgpf7NO" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="location" type="service_closure" id=".errored..service_locator.dgpf7NO.App\Entity\Location"/>
+      </argument>
+    </service>
+    <service id=".service_locator.1AE27f6" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="location" type="service_closure" id=".errored..service_locator.1AE27f6.App\Entity\Location"/>
+      </argument>
+    </service>
+    <service id=".service_locator.ODCF3UA" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="measurementRepository" type="service_closure" id="App\Repository\MeasurementRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.2tZn04d" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="measurement" type="service_closure" id=".errored..service_locator.2tZn04d.App\Entity\Measurement"/>
+      </argument>
+    </service>
+    <service id=".service_locator.M6eEz9." class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="measurement" type="service_closure" id=".errored..service_locator.M6eEz9..App\Entity\Measurement"/>
+      </argument>
+    </service>
     <service id=".service_locator.UHO2hGq" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -6834,14 +6956,34 @@
         <argument key="repository" type="service_closure" id="App\Repository\MeasurementRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.k5lbapq" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.CiLZ.Cg" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Controller\LocationController::delete" type="service_closure" id=".service_locator.1AE27f6"/>
+        <argument key="App\Controller\LocationController::edit" type="service_closure" id=".service_locator.1AE27f6"/>
+        <argument key="App\Controller\LocationController::index" type="service_closure" id=".service_locator.YNXvnLc"/>
+        <argument key="App\Controller\LocationController::new" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\LocationController::show" type="service_closure" id=".service_locator.dgpf7NO"/>
+        <argument key="App\Controller\MeasurementController::delete" type="service_closure" id=".service_locator.M6eEz9."/>
+        <argument key="App\Controller\MeasurementController::edit" type="service_closure" id=".service_locator.M6eEz9."/>
+        <argument key="App\Controller\MeasurementController::index" type="service_closure" id=".service_locator.ODCF3UA"/>
+        <argument key="App\Controller\MeasurementController::new" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\MeasurementController::show" type="service_closure" id=".service_locator.2tZn04d"/>
         <argument key="App\Controller\WeatherController::city" type="service_closure" id=".service_locator.UHO2hGq"/>
         <argument key="App\Kernel::loadRoutes" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="App\Kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="kernel::loadRoutes" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
+        <argument key="App\Controller\LocationController:delete" type="service_closure" id=".service_locator.1AE27f6"/>
+        <argument key="App\Controller\LocationController:edit" type="service_closure" id=".service_locator.1AE27f6"/>
+        <argument key="App\Controller\LocationController:index" type="service_closure" id=".service_locator.YNXvnLc"/>
+        <argument key="App\Controller\LocationController:new" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\LocationController:show" type="service_closure" id=".service_locator.dgpf7NO"/>
+        <argument key="App\Controller\MeasurementController:delete" type="service_closure" id=".service_locator.M6eEz9."/>
+        <argument key="App\Controller\MeasurementController:edit" type="service_closure" id=".service_locator.M6eEz9."/>
+        <argument key="App\Controller\MeasurementController:index" type="service_closure" id=".service_locator.ODCF3UA"/>
+        <argument key="App\Controller\MeasurementController:new" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\MeasurementController:show" type="service_closure" id=".service_locator.2tZn04d"/>
         <argument key="App\Controller\WeatherController:city" type="service_closure" id=".service_locator.UHO2hGq"/>
         <argument key="kernel:loadRoutes" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="kernel:registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
@@ -7000,9 +7142,11 @@
       <argument type="service" id="argument_resolver.query_parameter_value_resolver"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.y4dplYt" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.fCZjU0k" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Form\LocationType" type="service_closure" id="App\Form\LocationType"/>
+        <argument key="App\Form\MeasurementType" type="service_closure" id="App\Form\MeasurementType"/>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service_closure" id="form.type.entity"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ChoiceType" type="service_closure" id="form.type.choice"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ColorType" type="service_closure" id="form.type.color"/>
@@ -7457,6 +7601,18 @@
         <argument key="web_link.http_header_serializer" type="service_closure" id="web_link.http_header_serializer" on-invalid="ignore"/>
       </argument>
     </service>
+    <service id=".service_locator.O2p6Lk7.App\Controller\LocationController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\LocationController"/>
+      <argument>App\Controller\LocationController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.O2p6Lk7" method="withContext"/>
+    </service>
+    <service id=".service_locator.O2p6Lk7.App\Controller\MeasurementController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\MeasurementController"/>
+      <argument>App\Controller\MeasurementController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.O2p6Lk7" method="withContext"/>
+    </service>
     <service id=".service_locator.O2p6Lk7.App\Controller\WeatherController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\WeatherController"/>
       <argument>App\Controller\WeatherController</argument>
@@ -7804,6 +7960,18 @@
     <service id=".errored..service_locator.y4_Zrx..Symfony\Component\Config\Loader\LoaderInterface" class="Symfony\Component\Config\Loader\LoaderInterface">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.y4_Zrx.&quot;: it needs an instance of &quot;Symfony\Component\Config\Loader\LoaderInterface&quot; but this type has been excluded from autowiring."/>
     </service>
+    <service id=".errored..service_locator.dgpf7NO.App\Entity\Location" class="App\Entity\Location">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.dgpf7NO&quot;: it needs an instance of &quot;App\Entity\Location&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
+    </service>
+    <service id=".errored..service_locator.1AE27f6.App\Entity\Location" class="App\Entity\Location">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.1AE27f6&quot;: it needs an instance of &quot;App\Entity\Location&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
+    </service>
+    <service id=".errored..service_locator.2tZn04d.App\Entity\Measurement" class="App\Entity\Measurement">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.2tZn04d&quot;: it needs an instance of &quot;App\Entity\Measurement&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
+    </service>
+    <service id=".errored..service_locator.M6eEz9..App\Entity\Measurement" class="App\Entity\Measurement">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.M6eEz9.&quot;: it needs an instance of &quot;App\Entity\Measurement&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
+    </service>
     <service id=".errored..service_locator.UHO2hGq.App\Entity\Location" class="App\Entity\Location">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.UHO2hGq&quot;: it needs an instance of &quot;App\Entity\Location&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
     </service>
@@ -8101,6 +8269,97 @@
       <argument>false</argument>
       <argument type="service_closure" id="console.command.mailer_test"/>
     </service>
+    <service id=".doctrine_migrations.diff_command.lazy" class="Symfony\Component\Console\Command\LazyCommand">
+      <argument>doctrine:migrations:diff</argument>
+      <argument type="collection"/>
+      <argument>Generate a migration by comparing your current database to your mapping information.</argument>
+      <argument>false</argument>
+      <argument type="service_closure" id="doctrine_migrations.diff_command"/>
+    </service>
+    <service id=".doctrine_migrations.sync_metadata_command.lazy" class="Symfony\Component\Console\Command\LazyCommand">
+      <argument>doctrine:migrations:sync-metadata-storage</argument>
+      <argument type="collection"/>
+      <argument>Ensures that the metadata storage is at the latest version.</argument>
+      <argument>false</argument>
+      <argument type="service_closure" id="doctrine_migrations.sync_metadata_command"/>
+    </service>
+    <service id=".doctrine_migrations.versions_command.lazy" class="Symfony\Component\Console\Command\LazyCommand">
+      <argument>doctrine:migrations:list</argument>
+      <argument type="collection"/>
+      <argument>Display a list of all available migrations and their status.</argument>
+      <argument>false</argument>
+      <argument type="service_closure" id="doctrine_migrations.versions_command"/>
+    </service>
+    <service id=".doctrine_migrations.current_command.lazy" class="Symfony\Component\Console\Command\LazyCommand">
+      <argument>doctrine:migrations:current</argument>
+      <argument type="collection"/>
+      <argument>Outputs the current version</argument>
+      <argument>false</argument>
+      <argument type="service_closure" id="doctrine_migrations.current_command"/>
+    </service>
+    <service id=".doctrine_migrations.dump_schema_command.lazy" class="Symfony\Component\Console\Command\LazyCommand">
+      <argument>doctrine:migrations:dump-schema</argument>
+      <argument type="collection"/>
+      <argument>Dump the schema for your database to a migration.</argument>
+      <argument>false</argument>
+      <argument type="service_closure" id="doctrine_migrations.dump_schema_command"/>
+    </service>
+    <service id=".doctrine_migrations.execute_command.lazy" class="Symfony\Component\Console\Command\LazyCommand">
+      <argument>doctrine:migrations:execute</argument>
+      <argument type="collection"/>
+      <argument>Execute one or more migration versions up or down manually.</argument>
+      <argument>false</argument>
+      <argument type="service_closure" id="doctrine_migrations.execute_command"/>
+    </service>
+    <service id=".doctrine_migrations.generate_command.lazy" class="Symfony\Component\Console\Command\LazyCommand">
+      <argument>doctrine:migrations:generate</argument>
+      <argument type="collection"/>
+      <argument>Generate a blank migration class.</argument>
+      <argument>false</argument>
+      <argument type="service_closure" id="doctrine_migrations.generate_command"/>
+    </service>
+    <service id=".doctrine_migrations.latest_command.lazy" class="Symfony\Component\Console\Command\LazyCommand">
+      <argument>doctrine:migrations:latest</argument>
+      <argument type="collection"/>
+      <argument>Outputs the latest version</argument>
+      <argument>false</argument>
+      <argument type="service_closure" id="doctrine_migrations.latest_command"/>
+    </service>
+    <service id=".doctrine_migrations.migrate_command.lazy" class="Symfony\Component\Console\Command\LazyCommand">
+      <argument>doctrine:migrations:migrate</argument>
+      <argument type="collection"/>
+      <argument>Execute a migration to a specified version or the latest available version.</argument>
+      <argument>false</argument>
+      <argument type="service_closure" id="doctrine_migrations.migrate_command"/>
+    </service>
+    <service id=".doctrine_migrations.rollup_command.lazy" class="Symfony\Component\Console\Command\LazyCommand">
+      <argument>doctrine:migrations:rollup</argument>
+      <argument type="collection"/>
+      <argument>Rollup migrations by deleting all tracked versions and insert the one version that exists.</argument>
+      <argument>false</argument>
+      <argument type="service_closure" id="doctrine_migrations.rollup_command"/>
+    </service>
+    <service id=".doctrine_migrations.status_command.lazy" class="Symfony\Component\Console\Command\LazyCommand">
+      <argument>doctrine:migrations:status</argument>
+      <argument type="collection"/>
+      <argument>View the status of a set of migrations.</argument>
+      <argument>false</argument>
+      <argument type="service_closure" id="doctrine_migrations.status_command"/>
+    </service>
+    <service id=".doctrine_migrations.up_to_date_command.lazy" class="Symfony\Component\Console\Command\LazyCommand">
+      <argument>doctrine:migrations:up-to-date</argument>
+      <argument type="collection"/>
+      <argument>Tells you if your schema is up-to-date.</argument>
+      <argument>false</argument>
+      <argument type="service_closure" id="doctrine_migrations.up_to_date_command"/>
+    </service>
+    <service id=".doctrine_migrations.version_command.lazy" class="Symfony\Component\Console\Command\LazyCommand">
+      <argument>doctrine:migrations:version</argument>
+      <argument type="collection"/>
+      <argument>Manually add and delete migration versions from the version table.</argument>
+      <argument>false</argument>
+      <argument type="service_closure" id="doctrine_migrations.version_command"/>
+    </service>
     <service id=".var_dumper.command.server_dump.lazy" class="Symfony\Component\Console\Command\LazyCommand">
       <argument>server:dump</argument>
       <argument type="collection"/>
@@ -8316,7 +8575,7 @@
     </service>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <tag name="container.no_preload"/>
-      <argument type="service" id=".service_locator.J_0PK.8"/>
+      <argument type="service" id=".service_locator.IS5_Gj4"/>
       <argument type="collection">
         <argument key="about">console.command.about</argument>
         <argument key="assets:install">console.command.assets_install</argument>
@@ -8426,7 +8685,7 @@
         <argument key="make:security:form-login">maker.auto_command.make_security_form_login</argument>
       </argument>
     </service>
-    <service id=".service_locator.J_0PK.8" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.IS5_Gj4" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="console.command.about" type="service_closure" id=".console.command.about.lazy"/>
@@ -8490,19 +8749,19 @@
         <argument key="doctrine.schema_update_command" type="service_closure" id="doctrine.schema_update_command"/>
         <argument key="doctrine.schema_validate_command" type="service_closure" id="doctrine.schema_validate_command"/>
         <argument key="doctrine.mapping_import_command" type="service_closure" id="doctrine.mapping_import_command"/>
-        <argument key="doctrine_migrations.diff_command" type="service_closure" id="doctrine_migrations.diff_command"/>
-        <argument key="doctrine_migrations.sync_metadata_command" type="service_closure" id="doctrine_migrations.sync_metadata_command"/>
-        <argument key="doctrine_migrations.versions_command" type="service_closure" id="doctrine_migrations.versions_command"/>
-        <argument key="doctrine_migrations.current_command" type="service_closure" id="doctrine_migrations.current_command"/>
-        <argument key="doctrine_migrations.dump_schema_command" type="service_closure" id="doctrine_migrations.dump_schema_command"/>
-        <argument key="doctrine_migrations.execute_command" type="service_closure" id="doctrine_migrations.execute_command"/>
-        <argument key="doctrine_migrations.generate_command" type="service_closure" id="doctrine_migrations.generate_command"/>
-        <argument key="doctrine_migrations.latest_command" type="service_closure" id="doctrine_migrations.latest_command"/>
-        <argument key="doctrine_migrations.migrate_command" type="service_closure" id="doctrine_migrations.migrate_command"/>
-        <argument key="doctrine_migrations.rollup_command" type="service_closure" id="doctrine_migrations.rollup_command"/>
-        <argument key="doctrine_migrations.status_command" type="service_closure" id="doctrine_migrations.status_command"/>
-        <argument key="doctrine_migrations.up_to_date_command" type="service_closure" id="doctrine_migrations.up_to_date_command"/>
-        <argument key="doctrine_migrations.version_command" type="service_closure" id="doctrine_migrations.version_command"/>
+        <argument key="doctrine_migrations.diff_command" type="service_closure" id=".doctrine_migrations.diff_command.lazy"/>
+        <argument key="doctrine_migrations.sync_metadata_command" type="service_closure" id=".doctrine_migrations.sync_metadata_command.lazy"/>
+        <argument key="doctrine_migrations.versions_command" type="service_closure" id=".doctrine_migrations.versions_command.lazy"/>
+        <argument key="doctrine_migrations.current_command" type="service_closure" id=".doctrine_migrations.current_command.lazy"/>
+        <argument key="doctrine_migrations.dump_schema_command" type="service_closure" id=".doctrine_migrations.dump_schema_command.lazy"/>
+        <argument key="doctrine_migrations.execute_command" type="service_closure" id=".doctrine_migrations.execute_command.lazy"/>
+        <argument key="doctrine_migrations.generate_command" type="service_closure" id=".doctrine_migrations.generate_command.lazy"/>
+        <argument key="doctrine_migrations.latest_command" type="service_closure" id=".doctrine_migrations.latest_command.lazy"/>
+        <argument key="doctrine_migrations.migrate_command" type="service_closure" id=".doctrine_migrations.migrate_command.lazy"/>
+        <argument key="doctrine_migrations.rollup_command" type="service_closure" id=".doctrine_migrations.rollup_command.lazy"/>
+        <argument key="doctrine_migrations.status_command" type="service_closure" id=".doctrine_migrations.status_command.lazy"/>
+        <argument key="doctrine_migrations.up_to_date_command" type="service_closure" id=".doctrine_migrations.up_to_date_command.lazy"/>
+        <argument key="doctrine_migrations.version_command" type="service_closure" id=".doctrine_migrations.version_command.lazy"/>
         <argument key="var_dumper.command.server_dump" type="service_closure" id=".var_dumper.command.server_dump.lazy"/>
         <argument key="monolog.command.server_log" type="service_closure" id=".monolog.command.server_log.lazy"/>
         <argument key="twig.command.debug" type="service_closure" id=".twig.command.debug.lazy"/>
@@ -8777,7 +9036,7 @@
     <service id="Psr\Log\LoggerInterface" alias="monolog.logger"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.7nzbL4K" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.k5lbapq"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.CiLZ.Cg"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -8798,9 +9057,11 @@
     <service id=".service_locator.80edgLI" alias="messenger.receiver_locator"/>
     <service id=".service_locator.h8Jkkd2" alias="messenger.retry_strategy_locator"/>
     <service id=".service_locator.o.uf2zi" alias=".service_locator.7nzbL4K"/>
-    <service id=".service_locator.bOwnzDN" alias=".service_locator.k5lbapq"/>
+    <service id=".service_locator..FnCAe4" alias=".service_locator.1AE27f6"/>
+    <service id=".service_locator.7daZcdo" alias=".service_locator.M6eEz9."/>
+    <service id=".service_locator.F3Sw1sF" alias=".service_locator.CiLZ.Cg"/>
     <service id=".service_locator.BFrsqsn" alias=".service_locator.F9PKc.7"/>
-    <service id=".service_locator.Za9MpXe" alias=".service_locator.y4dplYt"/>
+    <service id=".service_locator.WHylR8X" alias=".service_locator.fCZjU0k"/>
     <service id=".service_locator.jij13qc" alias=".service_locator.PBToVFE"/>
     <service id=".service_locator.O24_MAy" alias=".service_locator.yY.p4P7"/>
     <service id=".service_locator.jUv.zyj" alias=".service_locator.O2p6Lk7"/>
@@ -8821,6 +9082,13 @@
     <service id="doctrine.orm.default_metadata_driver" alias=".doctrine.orm.default_metadata_driver"/>
     <service id="security.event_dispatcher.main" alias="debug.security.event_dispatcher.main"/>
     <service id=".service_locator.gFlme_s" alias=".service_locator.y4_Zrx."/>
+    <service id=".service_locator.VFPPNO1" alias=".service_locator.YNXvnLc"/>
+    <service id=".service_locator.9e2t_lq" alias=".service_locator.CsMkqUa"/>
+    <service id=".service_locator.Shonwhw" alias=".service_locator.dgpf7NO"/>
+    <service id=".service_locator.9MSNxSi" alias=".service_locator.1AE27f6"/>
+    <service id=".service_locator.KC6qzQV" alias=".service_locator.ODCF3UA"/>
+    <service id=".service_locator.xXcVsX8" alias=".service_locator.2tZn04d"/>
+    <service id=".service_locator.CytaPi." alias=".service_locator.M6eEz9."/>
     <service id=".service_locator.BKnI5wo" alias=".service_locator.UHO2hGq"/>
     <service id=".service_locator.Q1z.f9O" alias=".service_locator.O2p6Lk7"/>
     <service id=".service_locator.dGUCsbe" alias=".service_locator.oR77BOj"/>

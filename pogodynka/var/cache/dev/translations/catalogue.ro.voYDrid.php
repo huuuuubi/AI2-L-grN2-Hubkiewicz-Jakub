@@ -102,6 +102,7 @@ $catalogue = new MessageCatalogue('ro', array (
     'Each element of this collection should satisfy its own set of constraints.' => 'Fiecare element din acest set ar trebui să îndeplinească propriul set de reguli.',
     'This value is not a valid International Securities Identification Number (ISIN).' => 'Această valoare nu este un număr internațional de identificare (ISIN) valabil.',
     'This value should be a valid expression.' => 'Această valoare ar trebui să fie o expresie validă.',
+    'This value is not a valid CSS color.' => 'Această valoare nu este o culoare CSS validă.',
     'This value is not a valid CIDR notation.' => 'Această valoare nu este o notație CIDR validă.',
     'The value of the netmask should be between {{ min }} and {{ max }}.' => 'Valoarea netmask-ului trebuie sa fie intre {{ min }} si {{ max }}.',
     'The filename is too long. It should have {{ filename_max_length }} character or less.|The filename is too long. It should have {{ filename_max_length }} characters or less.' => 'Denumirea fișierului este prea lungă. Ea trebuie să conțină {{ filename_max_length }} caractere sau mai puține.|Denumirea fișierului este prea lungă. Ea trebuie să conțină {{ filename_max_length }} caractere sau mai puține.',
