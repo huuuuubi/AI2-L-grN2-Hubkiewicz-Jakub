@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cbc802ce-4b7f-45e8-9739-ec37c025ad78" name="Changes" comment="">
+<<<<<<< Updated upstream
       <change afterPath="$PROJECT_DIR$/pogodynka/config/validator/validation.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/AI2-L-grN2-Hubkiewicz-Jakub.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/AI2-L-grN2-Hubkiewicz-Jakub.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/efe16a3f-0cc2-4510-8a7a-a6d2d4ed5513.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/efe16a3f-0cc2-4510-8a7a-a6d2d4ed5513.xml" afterDir="false" />
@@ -15,12 +16,26 @@
       <change beforePath="$PROJECT_DIR$/pogodynka/src/Entity/Location.php" beforeDir="false" afterPath="$PROJECT_DIR$/pogodynka/src/Entity/Location.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pogodynka/src/Entity/Measurement.php" beforeDir="false" afterPath="$PROJECT_DIR$/pogodynka/src/Entity/Measurement.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pogodynka/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/pogodynka/templates/base.html.twig" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/efe16a3f-0cc2-4510-8a7a-a6d2d4ed5513.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/efe16a3f-0cc2-4510-8a7a-a6d2d4ed5513.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/efe16a3f-0cc2-4510-8a7a-a6d2d4ed5513/storage_v2/_src_/schema/main.uQUzAA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/efe16a3f-0cc2-4510-8a7a-a6d2d4ed5513/storage_v2/_src_/schema/main.uQUzAA.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pogodynka/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pogodynka/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pogodynka/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pogodynka/config/routes.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pogodynka/src/Controller/LocationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/pogodynka/src/Controller/LocationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pogodynka/src/Controller/MeasurementController.php" beforeDir="false" afterPath="$PROJECT_DIR$/pogodynka/src/Controller/MeasurementController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pogodynka/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/pogodynka/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pogodynka/templates/location/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/pogodynka/templates/location/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pogodynka/templates/measurement/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/pogodynka/templates/measurement/index.html.twig" afterDir="false" />
+>>>>>>> Stashed changes
       <change beforePath="$PROJECT_DIR$/pogodynka/var/cache/dev/App_KernelDevDebugContainer.php" beforeDir="false" afterPath="$PROJECT_DIR$/pogodynka/var/cache/dev/App_KernelDevDebugContainer.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pogodynka/var/cache/dev/App_KernelDevDebugContainer.php.meta" beforeDir="false" afterPath="$PROJECT_DIR$/pogodynka/var/cache/dev/App_KernelDevDebugContainer.php.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pogodynka/var/cache/dev/App_KernelDevDebugContainer.preload.php" beforeDir="false" afterPath="$PROJECT_DIR$/pogodynka/var/cache/dev/App_KernelDevDebugContainer.preload.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pogodynka/var/cache/dev/App_KernelDevDebugContainer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pogodynka/var/cache/dev/App_KernelDevDebugContainer.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pogodynka/var/cache/dev/App_KernelDevDebugContainer.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/pogodynka/var/cache/dev/App_KernelDevDebugContainer.xml.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pogodynka/var/cache/dev/App_KernelDevDebugContainerCompiler.log" beforeDir="false" afterPath="$PROJECT_DIR$/pogodynka/var/cache/dev/App_KernelDevDebugContainerCompiler.log" afterDir="false" />
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/pogodynka/var/cache/dev/ContainerCeCvixl/App_KernelDevDebugContainer.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pogodynka/var/cache/dev/ContainerCeCvixl/EntityManagerGhostEbeb667.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pogodynka/var/cache/dev/ContainerCeCvixl/RequestPayloadValueResolverGhost3590451.php" beforeDir="false" />
@@ -999,12 +1014,18 @@
       <change beforePath="$PROJECT_DIR$/pogodynka/var/cache/dev/twig/98/98458bf6034e7caffe08998a7d0f20ee.php" beforeDir="false" afterPath="$PROJECT_DIR$/pogodynka/var/cache/dev/twig/98/98458bf6034e7caffe08998a7d0f20ee.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pogodynka/var/cache/dev/twig/af/af525ce35ba5406f8c2025a0dbbf35d4.php" beforeDir="false" afterPath="$PROJECT_DIR$/pogodynka/var/cache/dev/twig/af/af525ce35ba5406f8c2025a0dbbf35d4.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pogodynka/var/cache/dev/twig/df/dfe75eab5d6cd1e638df6ae5a2a8ca72.php" beforeDir="false" afterPath="$PROJECT_DIR$/pogodynka/var/cache/dev/twig/df/dfe75eab5d6cd1e638df6ae5a2a8ca72.php" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/pogodynka/var/cache/dev/profiler/index.csv" beforeDir="false" afterPath="$PROJECT_DIR$/pogodynka/var/cache/dev/profiler/index.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pogodynka/var/cache/dev/profiler/index.csv.offset" beforeDir="false" afterPath="$PROJECT_DIR$/pogodynka/var/cache/dev/profiler/index.csv.offset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pogodynka/var/cache/dev/twig/12/12351693ca2645d9c98ddc835e39b638.php" beforeDir="false" afterPath="$PROJECT_DIR$/pogodynka/var/cache/dev/twig/12/12351693ca2645d9c98ddc835e39b638.php" afterDir="false" />
+>>>>>>> Stashed changes
       <change beforePath="$PROJECT_DIR$/pogodynka/var/cache/dev/url_generating_routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/pogodynka/var/cache/dev/url_generating_routes.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pogodynka/var/cache/dev/url_generating_routes.php.meta" beforeDir="false" afterPath="$PROJECT_DIR$/pogodynka/var/cache/dev/url_generating_routes.php.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pogodynka/var/cache/dev/url_matching_routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/pogodynka/var/cache/dev/url_matching_routes.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pogodynka/var/cache/dev/url_matching_routes.php.meta" beforeDir="false" afterPath="$PROJECT_DIR$/pogodynka/var/cache/dev/url_matching_routes.php.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pogodynka/var/data.db" beforeDir="false" afterPath="$PROJECT_DIR$/pogodynka/var/data.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pogodynka/var/log/dev.log" beforeDir="false" afterPath="$PROJECT_DIR$/pogodynka/var/log/dev.log" afterDir="false" />
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/pogodynka/vendor/autoload.php" beforeDir="false" afterPath="$PROJECT_DIR$/pogodynka/vendor/autoload.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pogodynka/vendor/composer/ClassLoader.php" beforeDir="false" afterPath="$PROJECT_DIR$/pogodynka/vendor/composer/ClassLoader.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pogodynka/vendor/composer/InstalledVersions.php" beforeDir="false" afterPath="$PROJECT_DIR$/pogodynka/vendor/composer/InstalledVersions.php" afterDir="false" />
@@ -1308,6 +1329,8 @@
       <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_real.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_real.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
+=======
+>>>>>>> Stashed changes
       <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -1526,7 +1549,11 @@
     &quot;database.data.extractors.current.export.id&quot;: &quot;SQL Updates&quot;,
     &quot;database.data.extractors.current.id&quot;: &quot;SQL Updates&quot;,
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+=======
+    &quot;git-widget-placeholder&quot;: &quot;lab-d&quot;,
+>>>>>>> Stashed changes
 =======
     &quot;git-widget-placeholder&quot;: &quot;lab-d&quot;,
 >>>>>>> Stashed changes
@@ -1563,7 +1590,13 @@
       <workItem from="1699094999611" duration="3818000" />
       <workItem from="1699181664956" duration="28000" />
       <workItem from="1700312979737" duration="3492000" />
+<<<<<<< Updated upstream
       <workItem from="1700412455512" duration="15593000" />
+=======
+      <workItem from="1700412455512" duration="16412000" />
+      <workItem from="1701016108448" duration="27000" />
+      <workItem from="1701016235491" duration="4620000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>

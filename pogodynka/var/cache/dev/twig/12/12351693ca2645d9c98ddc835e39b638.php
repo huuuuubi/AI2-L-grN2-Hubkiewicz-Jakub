@@ -76,6 +76,25 @@ class __TwigTemplate_983d984dfe8635fb6392b6f4bcf42996 extends Template
                         <li class=\"nav-item\">
                             <a class=\"nav-link\" href=\"/measurement\">Measurements</a>
                         </li>
+                        <li class=\"nav-item\">
+                            ";
+        // line 32
+        if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_USER")) {
+            // line 33
+            echo "                                <a href=\"";
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
+            echo "\" class=\"nav-link\">Logout</a>
+                            ";
+        } else {
+            // line 35
+            echo "                                <a href=\"";
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
+            echo "\" class=\"nav-link\">Login</a>
+                            ";
+        }
+        // line 37
+        echo "
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -83,15 +102,15 @@ class __TwigTemplate_983d984dfe8635fb6392b6f4bcf42996 extends Template
 
     <div class=\"p-3\">
         ";
-        // line 37
+        // line 45
         $this->displayBlock('body', $context, $blocks);
-        // line 39
+        // line 47
         echo "    </div>
     </body>
     ";
-        // line 41
+        // line 49
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 46
+        // line 54
         echo "
     <style>
         body {
@@ -150,7 +169,7 @@ class __TwigTemplate_983d984dfe8635fb6392b6f4bcf42996 extends Template
 
     }
 
-    // line 37
+    // line 45
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -160,7 +179,7 @@ class __TwigTemplate_983d984dfe8635fb6392b6f4bcf42996 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 38
+        // line 46
         echo "        ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -170,7 +189,7 @@ class __TwigTemplate_983d984dfe8635fb6392b6f4bcf42996 extends Template
 
     }
 
-    // line 41
+    // line 49
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -180,7 +199,7 @@ class __TwigTemplate_983d984dfe8635fb6392b6f4bcf42996 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 42
+        // line 50
         echo "        <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js\"
                 integrity=\"sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM\"
                 crossorigin=\"anonymous\"></script>
@@ -198,9 +217,14 @@ class __TwigTemplate_983d984dfe8635fb6392b6f4bcf42996 extends Template
         return "base.html.twig";
     }
 
+    public function isTraitable()
+    {
+        return false;
+    }
+
     public function getDebugInfo()
     {
-        return array (  184 => 42,  174 => 41,  164 => 38,  154 => 37,  141 => 10,  131 => 9,  112 => 5,  95 => 46,  93 => 41,  89 => 39,  87 => 37,  62 => 14,  60 => 9,  53 => 5,  47 => 1,);
+        return array (  203 => 50,  193 => 49,  183 => 46,  173 => 45,  160 => 10,  150 => 9,  131 => 5,  114 => 54,  112 => 49,  108 => 47,  106 => 45,  96 => 37,  90 => 35,  84 => 33,  82 => 32,  62 => 14,  60 => 9,  53 => 5,  47 => 1,);
     }
 
     public function getSourceContext()
@@ -234,6 +258,14 @@ class __TwigTemplate_983d984dfe8635fb6392b6f4bcf42996 extends Template
                         </li>
                         <li class=\"nav-item\">
                             <a class=\"nav-link\" href=\"/measurement\">Measurements</a>
+                        </li>
+                        <li class=\"nav-item\">
+                            {% if is_granted('ROLE_USER') %}
+                                <a href=\"{{ path('app_logout') }}\" class=\"nav-link\">Logout</a>
+                            {% else %}
+                                <a href=\"{{ path('app_login') }}\" class=\"nav-link\">Login</a>
+                            {% endif %}
+
                         </li>
                     </ul>
                 </div>
