@@ -1525,7 +1525,11 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;database.data.extractors.current.export.id&quot;: &quot;SQL Updates&quot;,
     &quot;database.data.extractors.current.id&quot;: &quot;SQL Updates&quot;,
+<<<<<<< Updated upstream
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+=======
+    &quot;git-widget-placeholder&quot;: &quot;lab-d&quot;,
+>>>>>>> Stashed changes
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/kuba/OneDrive/Pulpit/ZUT/AI2/AI2-L-grN2-Hubkiewicz-Jakub&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
