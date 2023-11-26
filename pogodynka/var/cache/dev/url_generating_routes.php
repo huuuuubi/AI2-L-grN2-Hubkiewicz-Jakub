@@ -21,6 +21,7 @@ return [
     'app_location_show' => [['id'], ['_controller' => 'App\\Controller\\LocationController::show'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/location']], [], [], []],
     'app_location_edit' => [['id'], ['_controller' => 'App\\Controller\\LocationController::edit'], [], [['text', '/edit'], ['variable', '/', '[^/]++', 'id', true], ['text', '/location']], [], [], []],
     'app_location_delete' => [['id'], ['_controller' => 'App\\Controller\\LocationController::delete'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/location']], [], [], []],
+    'app_login' => [[], ['_controller' => 'App\\Controller\\LoginController::index'], [], [['text', '/login']], [], [], []],
     'app_measurement_index' => [[], ['_controller' => 'App\\Controller\\MeasurementController::index'], [], [['text', '/measurement/']], [], [], []],
     'app_measurement_new' => [[], ['_controller' => 'App\\Controller\\MeasurementController::new'], [], [['text', '/measurement/new']], [], [], []],
     'app_measurement_show' => [['id'], ['_controller' => 'App\\Controller\\MeasurementController::show'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/measurement']], [], [], []],

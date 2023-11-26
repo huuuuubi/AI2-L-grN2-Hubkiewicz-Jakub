@@ -332,3 +332,5 @@ dc5e1c,::1,GET,http://pogodynka.localhost:46525/location/,1700428637,,200
 662dd8,::1,GET,http://pogodynka.localhost:46525/location/4/edit,1700428652,,200
 a55ccd,::1,POST,http://pogodynka.localhost:46525/location/4,1700428677,,303
 51379b,::1,GET,http://pogodynka.localhost:46525/location/,1700428677,,200
+57db79,::1,GET,http://pogodynka.localhost:46525/measurement/,1701021263,c48f0b,500
+c48f0b,::1,GET,http://pogodynka.localhost:46525/measurement/,1701021263,,500

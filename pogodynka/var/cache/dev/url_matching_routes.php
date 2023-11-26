@@ -16,6 +16,7 @@ return [
         '/_profiler/open' => [[['_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'], null, null, null, false, false, null]],
         '/location' => [[['_route' => 'app_location_index', '_controller' => 'App\\Controller\\LocationController::index'], null, ['GET' => 0], null, true, false, null]],
         '/location/new' => [[['_route' => 'app_location_new', '_controller' => 'App\\Controller\\LocationController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/login' => [[['_route' => 'app_login', '_controller' => 'App\\Controller\\LoginController::index'], null, null, null, false, false, null]],
         '/measurement' => [[['_route' => 'app_measurement_index', '_controller' => 'App\\Controller\\MeasurementController::index'], null, ['GET' => 0], null, true, false, null]],
         '/measurement/new' => [[['_route' => 'app_measurement_new', '_controller' => 'App\\Controller\\MeasurementController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
     ],
