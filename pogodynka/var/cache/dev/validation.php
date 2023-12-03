@@ -11,6 +11,9 @@ return [[
 'Traversable' => 4,
 'Countable' => 5,
 'ArrayAccess' => 6,
+'App.Entity.Location' => 7,
+'Stringable' => 8,
+'App.Entity.Measurement' => 9,
 
 ], [
 
@@ -172,6 +175,302 @@ return [[
                 ],
                 'defaultGroup' => [
                     'ArrayAccess',
+                ],
+            ],
+        ],
+        $o[0],
+        []
+    );
+},
+7 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            (($f = &\Symfony\Component\VarExporter\Internal\Registry::$factories)['Symfony\\Component\\Validator\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::f('Symfony\\Component\\Validator\\Mapping\\ClassMetadata'))(),
+            ($f['Symfony\\Component\\Validator\\Mapping\\PropertyMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::f('Symfony\\Component\\Validator\\Mapping\\PropertyMetadata'))(),
+            clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Symfony\\Component\\Validator\\Constraints\\NotNull'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Validator\\Constraints\\NotNull')),
+            clone ($p['Symfony\\Component\\Validator\\Constraints\\Length'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Validator\\Constraints\\Length')),
+            $f['Symfony\\Component\\Validator\\Mapping\\PropertyMetadata'](),
+            clone ($p['Symfony\\Component\\Validator\\Constraints\\NotBlank'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Validator\\Constraints\\NotBlank')),
+            clone $p['Symfony\\Component\\Validator\\Constraints\\Length'],
+            $f['Symfony\\Component\\Validator\\Mapping\\PropertyMetadata'](),
+            clone $p['Symfony\\Component\\Validator\\Constraints\\NotBlank'],
+            $f['Symfony\\Component\\Validator\\Mapping\\PropertyMetadata'](),
+            clone $p['Symfony\\Component\\Validator\\Constraints\\NotBlank'],
+            clone ($p['Symfony\\Component\\Validator\\Constraints\\Type'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Validator\\Constraints\\Type')),
+        ],
+        null,
+        [
+            'stdClass' => [
+                'name' => [
+                    'App\\Entity\\Location',
+                    'city',
+                    4 => 'country',
+                    7 => 'longitude',
+                    9 => 'latitude',
+                ],
+                'defaultGroup' => [
+                    'Location',
+                ],
+                'members' => [
+                    [
+                        'city' => [
+                            $o[1],
+                        ],
+                        'country' => [
+                            $o[4],
+                        ],
+                        'longitude' => [
+                            $o[7],
+                        ],
+                        'latitude' => [
+                            $o[9],
+                        ],
+                    ],
+                ],
+                'properties' => [
+                    [
+                        'city' => $o[1],
+                        'country' => $o[4],
+                        'longitude' => $o[7],
+                        'latitude' => $o[9],
+                    ],
+                ],
+                'constraints' => [
+                    1 => [
+                        $o[2],
+                        $o[3],
+                    ],
+                    4 => [
+                        $o[5],
+                        $o[6],
+                    ],
+                    7 => [
+                        $o[8],
+                    ],
+                    9 => [
+                        $o[10],
+                        $o[11],
+                    ],
+                ],
+                'constraintsByGroup' => [
+                    1 => [
+                        'Default' => [
+                            $o[2],
+                        ],
+                        'Location' => [
+                            $o[2],
+                        ],
+                        'create' => [
+                            $o[3],
+                        ],
+                        'edit' => [
+                            $o[3],
+                        ],
+                    ],
+                    4 => [
+                        'create' => [
+                            $o[5],
+                            $o[6],
+                        ],
+                        'edit' => [
+                            $o[5],
+                            $o[6],
+                        ],
+                    ],
+                    7 => [
+                        'create' => [
+                            $o[8],
+                        ],
+                        'edit' => [
+                            $o[8],
+                        ],
+                    ],
+                    9 => [
+                        'create' => [
+                            $o[10],
+                        ],
+                        'edit' => [
+                            $o[10],
+                        ],
+                        'Default' => [
+                            $o[11],
+                        ],
+                        'Location' => [
+                            $o[11],
+                        ],
+                    ],
+                ],
+                'class' => [
+                    1 => 'App\\Entity\\Location',
+                    4 => 'App\\Entity\\Location',
+                    7 => 'App\\Entity\\Location',
+                    9 => 'App\\Entity\\Location',
+                ],
+                'property' => [
+                    1 => 'city',
+                    4 => 'country',
+                    7 => 'longitude',
+                    9 => 'latitude',
+                ],
+                'groups' => [
+                    2 => [
+                        'Default',
+                        'Location',
+                    ],
+                    [
+                        'create',
+                        'edit',
+                    ],
+                    5 => [
+                        'create',
+                        'edit',
+                    ],
+                    [
+                        'create',
+                        'edit',
+                    ],
+                    8 => [
+                        'create',
+                        'edit',
+                    ],
+                    10 => [
+                        'create',
+                        'edit',
+                    ],
+                    [
+                        'Default',
+                        'Location',
+                    ],
+                ],
+                'min' => [
+                    3 => 2,
+                    6 => 2,
+                ],
+                'max' => [
+                    6 => 2,
+                ],
+                'type' => [
+                    11 => 'integer',
+                ],
+            ],
+        ],
+        $o[0],
+        []
+    );
+},
+8 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            (\Symfony\Component\VarExporter\Internal\Registry::$factories['Symfony\\Component\\Validator\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::f('Symfony\\Component\\Validator\\Mapping\\ClassMetadata'))(),
+        ],
+        null,
+        [
+            'stdClass' => [
+                'name' => [
+                    'Stringable',
+                ],
+                'defaultGroup' => [
+                    'Stringable',
+                ],
+            ],
+        ],
+        $o[0],
+        []
+    );
+},
+9 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            (($f = &\Symfony\Component\VarExporter\Internal\Registry::$factories)['Symfony\\Component\\Validator\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::f('Symfony\\Component\\Validator\\Mapping\\ClassMetadata'))(),
+            ($f['Symfony\\Component\\Validator\\Mapping\\PropertyMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::f('Symfony\\Component\\Validator\\Mapping\\PropertyMetadata'))(),
+            clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Symfony\\Component\\Validator\\Constraints\\NotBlank'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Validator\\Constraints\\NotBlank')),
+            $f['Symfony\\Component\\Validator\\Mapping\\PropertyMetadata'](),
+            clone $p['Symfony\\Component\\Validator\\Constraints\\NotBlank'],
+            clone ($p['Symfony\\Component\\Validator\\Constraints\\Range'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Validator\\Constraints\\Range')),
+        ],
+        null,
+        [
+            'stdClass' => [
+                'name' => [
+                    'App\\Entity\\Measurement',
+                    'date',
+                    3 => 'celsius',
+                ],
+                'defaultGroup' => [
+                    'Measurement',
+                ],
+                'members' => [
+                    [
+                        'date' => [
+                            $o[1],
+                        ],
+                        'celsius' => [
+                            $o[3],
+                        ],
+                    ],
+                ],
+                'properties' => [
+                    [
+                        'date' => $o[1],
+                        'celsius' => $o[3],
+                    ],
+                ],
+                'constraints' => [
+                    1 => [
+                        $o[2],
+                    ],
+                    3 => [
+                        $o[4],
+                        $o[5],
+                    ],
+                ],
+                'constraintsByGroup' => [
+                    1 => [
+                        'create' => [
+                            $o[2],
+                        ],
+                        'edit' => [
+                            $o[2],
+                        ],
+                    ],
+                    3 => [
+                        'create' => [
+                            $o[4],
+                            $o[5],
+                        ],
+                        'edit' => [
+                            $o[4],
+                            $o[5],
+                        ],
+                    ],
+                ],
+                'class' => [
+                    1 => 'App\\Entity\\Measurement',
+                    3 => 'App\\Entity\\Measurement',
+                ],
+                'property' => [
+                    1 => 'date',
+                    3 => 'celsius',
+                ],
+                'groups' => [
+                    2 => [
+                        'create',
+                        'edit',
+                    ],
+                    4 => [
+                        'create',
+                        'edit',
+                    ],
+                    [
+                        'create',
+                        'edit',
+                    ],
+                ],
+                'min' => [
+                    5 => -20,
+                ],
+                'max' => [
+                    5 => 40,
                 ],
             ],
         ],
