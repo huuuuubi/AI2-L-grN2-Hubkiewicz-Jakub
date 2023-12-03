@@ -27,6 +27,6 @@ return [
     'app_measurement_show' => [['id'], ['_controller' => 'App\\Controller\\MeasurementController::show'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/measurement']], [], [], []],
     'app_measurement_edit' => [['id'], ['_controller' => 'App\\Controller\\MeasurementController::edit'], [], [['text', '/edit'], ['variable', '/', '[^/]++', 'id', true], ['text', '/measurement']], [], [], []],
     'app_measurement_delete' => [['id'], ['_controller' => 'App\\Controller\\MeasurementController::delete'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/measurement']], [], [], []],
-    'app_weather' => [['country', 'city'], ['_controller' => 'App\\Controller\\WeatherController::city'], [], [['variable', '/', '[^/]++', 'city', true], ['variable', '/', '[^/]++', 'country', true], ['text', '/weather']], [], [], []],
+    'app_weather' => [['country', 'city'], ['_controller' => 'App\\Controller\\WeatherController::city'], ['id' => '\\d+'], [['variable', '/', '[^/]++', 'city', true], ['variable', '/', '[^/]++', 'country', true], ['text', '/weather']], [], [], []],
     'app_logout' => [[], [], [], [['text', '/logout']], [], [], []],
 ];

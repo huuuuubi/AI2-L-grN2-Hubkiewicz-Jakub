@@ -360,6 +360,18 @@
     <service id="App\Entity" class="App\Entity" abstract="true">
       <tag name="container.excluded" source="in &quot;config/services.yaml&quot;"/>
     </service>
+    <service id="App\Command\WeatherLocationCommand" class="App\Command\WeatherLocationCommand" autowire="true" autoconfigure="true">
+      <tag name="console.command"/>
+      <tag name="container.no_preload"/>
+      <argument type="service" id="App\Repository\LocationRepository"/>
+      <argument type="service" id="App\Service\WeatherUtil"/>
+      <call method="setName">
+        <argument>weather:location</argument>
+      </call>
+      <call method="setDescription">
+        <argument>Add a short description for your command</argument>
+      </call>
+    </service>
     <service id="App\Controller\LocationController" class="App\Controller\LocationController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -406,6 +418,10 @@
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
+    <service id="App\Service\WeatherUtil" class="App\Service\WeatherUtil" autowire="true" autoconfigure="true">
+      <argument type="service" id="App\Repository\LocationRepository"/>
+      <argument type="service" id="App\Repository\MeasurementRepository"/>
+    </service>
     <service id="argument_metadata_factory" class="Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadataFactory"/>
     <service id="argument_resolver.backed_enum_resolver" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\BackedEnumValueResolver">
       <tag priority="100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\BackedEnumValueResolver">controller.argument_value_resolver</tag>
@@ -433,7 +449,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.q1QiLqx"/>
+      <argument type="service" id=".service_locator.78JeOfS"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -2987,7 +3003,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.q1QiLqx"/>
+      <argument type="service" id=".service_locator.78JeOfS"/>
     </service>
     <service id="debug.log_processor" class="Symfony\Bridge\Monolog\Processor\DebugProcessor">
       <argument type="service" id="request_stack"/>
@@ -6670,6 +6686,8 @@
       <argument type="service" id="maker.security_config_updater"/>
       <argument type="service" id="maker.security_controller_builder"/>
     </service>
+    <service id=".instanceof.Symfony\Component\Console\Command\Command.0.App\Command\WeatherLocationCommand" class="App\Command\WeatherLocationCommand" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Command\WeatherLocationCommand" class="App\Command\WeatherLocationCommand" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\LocationController" class="App\Controller\LocationController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\LocationController" class="App\Controller\LocationController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\LocationController" class="App\Controller\LocationController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -7116,14 +7134,14 @@
         <argument key="measurement" type="service_closure" id=".errored..service_locator.M6eEz9..App\Entity\Measurement"/>
       </argument>
     </service>
-    <service id=".service_locator.UHO2hGq" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.yyLDgIV" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="location" type="service_closure" id=".errored..service_locator.UHO2hGq.App\Entity\Location"/>
-        <argument key="repository" type="service_closure" id="App\Repository\MeasurementRepository"/>
+        <argument key="location" type="service_closure" id=".errored..service_locator.yyLDgIV.App\Entity\Location"/>
+        <argument key="util" type="service_closure" id="App\Service\WeatherUtil"/>
       </argument>
     </service>
-    <service id=".service_locator.q1QiLqx" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.78JeOfS" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\LocationController::delete" type="service_closure" id=".service_locator.1AE27f6"/>
@@ -7137,7 +7155,7 @@
         <argument key="App\Controller\MeasurementController::index" type="service_closure" id=".service_locator.ODCF3UA"/>
         <argument key="App\Controller\MeasurementController::new" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\MeasurementController::show" type="service_closure" id=".service_locator.2tZn04d"/>
-        <argument key="App\Controller\WeatherController::city" type="service_closure" id=".service_locator.UHO2hGq"/>
+        <argument key="App\Controller\WeatherController::city" type="service_closure" id=".service_locator.yyLDgIV"/>
         <argument key="App\Kernel::loadRoutes" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="App\Kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="kernel::loadRoutes" type="service_closure" id=".service_locator.y4_Zrx."/>
@@ -7153,7 +7171,7 @@
         <argument key="App\Controller\MeasurementController:index" type="service_closure" id=".service_locator.ODCF3UA"/>
         <argument key="App\Controller\MeasurementController:new" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\MeasurementController:show" type="service_closure" id=".service_locator.2tZn04d"/>
-        <argument key="App\Controller\WeatherController:city" type="service_closure" id=".service_locator.UHO2hGq"/>
+        <argument key="App\Controller\WeatherController:city" type="service_closure" id=".service_locator.yyLDgIV"/>
         <argument key="kernel:loadRoutes" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="kernel:registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
       </argument>
@@ -8164,8 +8182,15 @@
     <service id=".errored..service_locator.M6eEz9..App\Entity\Measurement" class="App\Entity\Measurement">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.M6eEz9.&quot;: it needs an instance of &quot;App\Entity\Measurement&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
     </service>
-    <service id=".errored..service_locator.UHO2hGq.App\Entity\Location" class="App\Entity\Location">
-      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.UHO2hGq&quot;: it needs an instance of &quot;App\Entity\Location&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
+    <service id=".errored..service_locator.yyLDgIV.App\Entity\Location" class="App\Entity\Location">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.yyLDgIV&quot;: it needs an instance of &quot;App\Entity\Location&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
+    </service>
+    <service id=".App\Command\WeatherLocationCommand.lazy" class="Symfony\Component\Console\Command\LazyCommand">
+      <argument>weather:location</argument>
+      <argument type="collection"/>
+      <argument>Add a short description for your command</argument>
+      <argument>false</argument>
+      <argument type="service_closure" id="App\Command\WeatherLocationCommand"/>
     </service>
     <service id=".console.command.about.lazy" class="Symfony\Component\Console\Command\LazyCommand">
       <argument>about</argument>
@@ -8767,8 +8792,9 @@
     </service>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <tag name="container.no_preload"/>
-      <argument type="service" id=".service_locator.IS5_Gj4"/>
+      <argument type="service" id=".service_locator.Weya4JH"/>
       <argument type="collection">
+        <argument key="weather:location">App\Command\WeatherLocationCommand</argument>
         <argument key="about">console.command.about</argument>
         <argument key="assets:install">console.command.assets_install</argument>
         <argument key="cache:clear">console.command.cache_clear</argument>
@@ -8877,9 +8903,10 @@
         <argument key="make:security:form-login">maker.auto_command.make_security_form_login</argument>
       </argument>
     </service>
-    <service id=".service_locator.IS5_Gj4" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.Weya4JH" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Command\WeatherLocationCommand" type="service_closure" id=".App\Command\WeatherLocationCommand.lazy"/>
         <argument key="console.command.about" type="service_closure" id=".console.command.about.lazy"/>
         <argument key="console.command.assets_install" type="service_closure" id=".console.command.assets_install.lazy"/>
         <argument key="console.command.cache_clear" type="service_closure" id=".console.command.cache_clear.lazy"/>
@@ -9228,7 +9255,7 @@
     <service id="Psr\Log\LoggerInterface" alias="monolog.logger"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.7nzbL4K" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.q1QiLqx"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.78JeOfS"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -9251,7 +9278,7 @@
     <service id=".service_locator.o.uf2zi" alias=".service_locator.7nzbL4K"/>
     <service id=".service_locator..FnCAe4" alias=".service_locator.1AE27f6"/>
     <service id=".service_locator.7daZcdo" alias=".service_locator.M6eEz9."/>
-    <service id=".service_locator.TvUXmSH" alias=".service_locator.q1QiLqx"/>
+    <service id=".service_locator.s..iKzx" alias=".service_locator.78JeOfS"/>
     <service id=".service_locator.BFrsqsn" alias=".service_locator.F9PKc.7"/>
     <service id=".service_locator.WHylR8X" alias=".service_locator.fCZjU0k"/>
     <service id=".service_locator.jij13qc" alias=".service_locator.PBToVFE"/>
@@ -9282,7 +9309,7 @@
     <service id=".service_locator.KC6qzQV" alias=".service_locator.ODCF3UA"/>
     <service id=".service_locator.xXcVsX8" alias=".service_locator.2tZn04d"/>
     <service id=".service_locator.CytaPi." alias=".service_locator.M6eEz9."/>
-    <service id=".service_locator.BKnI5wo" alias=".service_locator.UHO2hGq"/>
+    <service id=".service_locator.H4uSGYW" alias=".service_locator.yyLDgIV"/>
     <service id=".service_locator.Q1z.f9O" alias=".service_locator.O2p6Lk7"/>
     <service id=".service_locator.dGUCsbe" alias=".service_locator.oR77BOj"/>
     <service id=".service_locator.u6DWx23" alias=".service_locator.cXsfP3P"/>
