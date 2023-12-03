@@ -360,6 +360,18 @@
     <service id="App\Entity" class="App\Entity" abstract="true">
       <tag name="container.excluded" source="in &quot;config/services.yaml&quot;"/>
     </service>
+    <service id="App\Command\WeatherCityCommand" class="App\Command\WeatherCityCommand" autowire="true" autoconfigure="true">
+      <tag name="console.command"/>
+      <tag name="container.no_preload"/>
+      <argument type="service" id="App\Repository\LocationRepository"/>
+      <argument type="service" id="App\Service\WeatherUtil"/>
+      <call method="setName">
+        <argument>weather:city</argument>
+      </call>
+      <call method="setDescription">
+        <argument>Add a short description for your command</argument>
+      </call>
+    </service>
     <service id="App\Command\WeatherLocationCommand" class="App\Command\WeatherLocationCommand" autowire="true" autoconfigure="true">
       <tag name="console.command"/>
       <tag name="container.no_preload"/>
@@ -367,9 +379,6 @@
       <argument type="service" id="App\Service\WeatherUtil"/>
       <call method="setName">
         <argument>weather:location</argument>
-      </call>
-      <call method="setDescription">
-        <argument>Add a short description for your command</argument>
       </call>
     </service>
     <service id="App\Controller\LocationController" class="App\Controller\LocationController" public="true" autowire="true" autoconfigure="true">
@@ -6686,6 +6695,8 @@
       <argument type="service" id="maker.security_config_updater"/>
       <argument type="service" id="maker.security_controller_builder"/>
     </service>
+    <service id=".instanceof.Symfony\Component\Console\Command\Command.0.App\Command\WeatherCityCommand" class="App\Command\WeatherCityCommand" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Command\WeatherCityCommand" class="App\Command\WeatherCityCommand" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Console\Command\Command.0.App\Command\WeatherLocationCommand" class="App\Command\WeatherLocationCommand" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Command\WeatherLocationCommand" class="App\Command\WeatherLocationCommand" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\LocationController" class="App\Controller\LocationController" autowire="true" abstract="true"/>
@@ -8185,12 +8196,12 @@
     <service id=".errored..service_locator.yyLDgIV.App\Entity\Location" class="App\Entity\Location">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.yyLDgIV&quot;: it needs an instance of &quot;App\Entity\Location&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
     </service>
-    <service id=".App\Command\WeatherLocationCommand.lazy" class="Symfony\Component\Console\Command\LazyCommand">
-      <argument>weather:location</argument>
+    <service id=".App\Command\WeatherCityCommand.lazy" class="Symfony\Component\Console\Command\LazyCommand">
+      <argument>weather:city</argument>
       <argument type="collection"/>
       <argument>Add a short description for your command</argument>
       <argument>false</argument>
-      <argument type="service_closure" id="App\Command\WeatherLocationCommand"/>
+      <argument type="service_closure" id="App\Command\WeatherCityCommand"/>
     </service>
     <service id=".console.command.about.lazy" class="Symfony\Component\Console\Command\LazyCommand">
       <argument>about</argument>
@@ -8792,8 +8803,9 @@
     </service>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <tag name="container.no_preload"/>
-      <argument type="service" id=".service_locator.Weya4JH"/>
+      <argument type="service" id=".service_locator.JFYBTbU"/>
       <argument type="collection">
+        <argument key="weather:city">App\Command\WeatherCityCommand</argument>
         <argument key="weather:location">App\Command\WeatherLocationCommand</argument>
         <argument key="about">console.command.about</argument>
         <argument key="assets:install">console.command.assets_install</argument>
@@ -8903,10 +8915,11 @@
         <argument key="make:security:form-login">maker.auto_command.make_security_form_login</argument>
       </argument>
     </service>
-    <service id=".service_locator.Weya4JH" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.JFYBTbU" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="App\Command\WeatherLocationCommand" type="service_closure" id=".App\Command\WeatherLocationCommand.lazy"/>
+        <argument key="App\Command\WeatherCityCommand" type="service_closure" id=".App\Command\WeatherCityCommand.lazy"/>
+        <argument key="App\Command\WeatherLocationCommand" type="service_closure" id="App\Command\WeatherLocationCommand"/>
         <argument key="console.command.about" type="service_closure" id=".console.command.about.lazy"/>
         <argument key="console.command.assets_install" type="service_closure" id=".console.command.assets_install.lazy"/>
         <argument key="console.command.cache_clear" type="service_closure" id=".console.command.cache_clear.lazy"/>
