@@ -512,3 +512,7 @@ ac9328,::1,POST,http://pogodynka.localhost:46525/measurement/new,1701634862,,303
 c6e31f,::1,POST,http://pogodynka.localhost:46525/measurement/new,1701634876,,303
 ef7671,::1,GET,http://pogodynka.localhost:46525/measurement/,1701634876,,200
 b3b5b2,::1,GET,http://pogodynka.localhost:46525/weather/PL/Szczecin,1701634900,,200
+2a1c5a,::1,GET,http://pogodynka.localhost:46525/weather/PL/Szczecin,1701635696,,200
+c6b35c,::1,GET,http://pogodynka.localhost:46525/measurement/,1701635697,,200
+a25de2,::1,GET,http://pogodynka.localhost:46525/location/,1701635698,,200
+d78083,::1,GET,http://pogodynka.localhost:46525/measurement/,1701635701,,200

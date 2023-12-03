@@ -13,28 +13,16 @@ class WeatherUtil
     )
     {
     }
-
-    /**
-     * @return Measurement[]
-     */
     public function getWeatherForLocation(Location $location): array
     {
-        $measurements = $this->measurementRepository->findByLocation($location);
-        return $measurements;
+        return $this->measurementRepository->findByLocation($location);
     }
-
-    /**
-     * @return Measurement[]
-     */
     public function getWeatherForCountryAndCity(string $countryCode, string $city): array
     {
         $location = $this->locationRepository->findOneBy([
             'country' => $countryCode,
             'city' => $city,
         ]);
-
-        $measurements = $this->getWeatherForLocation($location);
-
-        return $measurements;
+        return $this->getWeatherForLocation($location);
     }
 }

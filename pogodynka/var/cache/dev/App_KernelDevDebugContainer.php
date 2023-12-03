@@ -16,6 +16,6 @@ if (!\class_exists(App_KernelDevDebugContainer::class, false)) {
 
 return new \ContainerVAsNMRg\App_KernelDevDebugContainer([
     'container.build_hash' => 'VAsNMRg',
-    'container.build_id' => '290419cf',
-    'container.build_time' => 1701635318,
+    'container.build_id' => 'c104d34e',
+    'container.build_time' => 1701636005,
 ], __DIR__.\DIRECTORY_SEPARATOR.'ContainerVAsNMRg');
