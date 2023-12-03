@@ -399,6 +399,7 @@ c61f87,::1,POST,http://pogodynka.localhost:46525/login,1701021053,,302
 fb1463,::1,POST,http://pogodynka.localhost:46525/login,1701021088,,302
 d54005,::1,GET,http://pogodynka.localhost:46525/measurement/,1701021088,,200
 >>>>>>> Stashed changes
+<<<<<<< Updated upstream
 aaeb4c,::1,GET,http://pogodynka.localhost:46525/,1701632018,,404
 1428fd,::1,GET,http://pogodynka.localhost:46525/location/,1701632039,,200
 6a1247,::1,GET,http://pogodynka.localhost:46525/location/,1701632045,,200
@@ -465,3 +466,19 @@ b3a3c6,::1,GET,http://pogodynka.localhost:46525/weather/PL/Szczecin,1701634067,,
 bb3269,::1,GET,http://pogodynka.localhost:46525/weather/PL/Police,1701634090,,200
 3aa8ea,::1,GET,http://pogodynka.localhost:46525/weather/PL/Szczecin,1701634192,,200
 e7d6cd,::1,GET,http://pogodynka.localhost:46525/weather/PL/Szczecin,1701634278,,200
+=======
+686ceb,::1,GET,http://pogodynka.localhost:46525/measurement/,1701021360,,302
+628a09,::1,GET,http://pogodynka.localhost:46525/login,1701021361,,200
+cea9c0,::1,POST,http://pogodynka.localhost:46525/login,1701021367,,302
+0a0d18,::1,GET,http://pogodynka.localhost:46525/measurement/,1701021368,,200
+deb13c,::1,GET,http://pogodynka.localhost:46525/measurement/1,1701021371,,200
+aa1880,::1,GET,http://pogodynka.localhost:46525/measurement/,1701021373,,200
+d0b9e1,::1,GET,http://pogodynka.localhost:46525/measurement/1/edit,1701021375,,200
+e7f15e,::1,GET,http://pogodynka.localhost:46525/measurement/,1701021376,,200
+3b7b20,::1,GET,http://pogodynka.localhost:46525/logout,1701021379,,302
+2826b6,::1,GET,http://pogodynka.localhost:46525/,1701021379,,404
+bac87a,::1,GET,http://pogodynka.localhost:46525/measurement/,1701021383,,302
+8a4db7,::1,GET,http://pogodynka.localhost:46525/login,1701021383,,200
+0f3e7f,::1,POST,http://pogodynka.localhost:46525/login,1701021388,,302
+c9ef7b,::1,GET,http://pogodynka.localhost:46525/measurement/,1701021388,,200
+>>>>>>> Stashed changes
